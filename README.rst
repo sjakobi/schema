@@ -14,10 +14,10 @@ obtained from config-files, forms, external services or command-line
 parsing, converted from JSON/YAML (or something else) to Python data-types.
 
 
-.. image:: https://secure.travis-ci.org/keleshev/schema.png?branch=master
+.. image:: https://img.shields.io/travis/keleshev/schema/master.svg
     :target: https://travis-ci.org/keleshev/schema
 
-.. image:: https://img.shields.io/codecov/c/github/keleshev/schema.svg
+.. image:: https://img.shields.io/codecov/c/github/keleshev/schema/master.svg
     :target: http://codecov.io/github/keleshev/schema
 
 Example
