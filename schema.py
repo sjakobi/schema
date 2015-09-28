@@ -145,14 +145,11 @@ class Schema(object):
             required = set(k for k in s if type(k) is not Optional)
             if not required.issubset(coverage):
                 missing_keys = required - coverage
-                s_missing_keys = ", ".join(repr(k) for k in missing_keys)
-                raise SchemaError('Missing keys: ' + s_missing_keys, e)
+                raise SchemaError('Missing keys: ' + _set_str(missing_keys), e)
             if len(new) != len(data):
                 wrong_keys = set(data.keys()) - set(new.keys())
-                s_wrong_keys = ', '.join(repr(k) for k in sorted(wrong_keys,
-                                                                 key=repr))
-                raise SchemaError('Wrong keys %s in %r' % (s_wrong_keys, data),
-                                  e)
+                raise SchemaError('Wrong keys %s in %r' %
+                                  (_set_str(wrong_keys), data), e)
 
             # Apply default-having optionals that haven't been used:
             defaults = set(k for k in s if type(k) is Optional and
@@ -217,3 +214,7 @@ def _callable_str(callable_):
     if hasattr(callable_, '__name__'):
         return callable_.__name__
     return str(callable_)
+
+
+def _set_str(set_):
+    return ', '.join(sorted(repr(x) for x in set_))
