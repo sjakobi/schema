@@ -217,3 +217,8 @@ def _callable_str(callable_):
     if hasattr(callable_, '__name__'):
         return callable_.__name__
     return str(callable_)
+
+
+def _has_method(object_, method_name):
+    method = getattr(object_, method_name, None)
+    return callable(method)
